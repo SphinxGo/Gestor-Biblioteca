@@ -108,8 +108,29 @@ class Miembro{
         return contacto;
     }
 
-    public ArrayList<Libro> getLibroPrestado(){
+    public ArrayList<Libro> getLibrosPrestados(){
         return librosPrestados;
     }
+
+    public void setNombre(String nombre){
+        this.nombre = nombre;
+    }
+
+    public void setApellido(String apellido){
+        this.apellido = apellido;
+    }
+
+    public void setContacto(String contacto){
+        this.contacto = contacto;
+    }
+
+    public void agregarLibro(Libro libro){
+        librosPrestados.add(libro);
+    }
+
+    public void quitarLibro(Libro libro){
+        librosPrestados.remove(libro);
+    }
+
 
 }
