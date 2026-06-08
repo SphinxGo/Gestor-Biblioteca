@@ -134,3 +134,59 @@ class Miembro{
 
 
 }
+
+class Prestamo{
+
+    private Libro libro;
+    private Miembro miembro;
+    private String fechaPrestamo;
+    private String fechaDevolucion;
+    private boolean devuelto;
+
+    public Prestamo(Libro libro, Miembro miembro, String fechaPrestamo, String fechaDevolucion){
+        this.libro = libro;
+        this.miembro = miembro;
+        this.fechaPrestamo = fechaPrestamo;
+        this.fechaDevolucion = fechaDevolucion;
+
+        this.devuelto= false;
+    }
+
+    public Libro getLibro(){
+        return libro;
+    }
+
+    public Miembro getMiembro(){
+        return miembro;
+    }
+
+    public String getFechaPrestamo(){
+        return fechaPrestamo;
+    }
+
+    public String getFechaDevolucion(){
+        return fechaDevolucion;
+    
+    }
+
+    public void setFechaDevolucion(String fechaDevolucion){
+        this.fechaDevolucion = fechaDevolucion;
+    }
+
+    public void mostrarDatos(){
+        System.out.println("Libro: " + libro.getTitulo());
+        System.out.println("Miembro: "+ miembro.getNombre());
+        System.out.println("Fecha de Prestamo: "+ getFechaPrestamo());
+        System.out.println("Fecha de Devolucion: " + getFechaDevolucion());
+        System.out.println("Devuelto?: " + (devuelto? "Si":"No"));
+    }
+
+    public void devolver(){
+        devuelto = true;
+    }
+
+    public boolean isDevuelto(){
+        return devuelto;
+    }
+
+}
