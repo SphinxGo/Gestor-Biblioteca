@@ -6,14 +6,16 @@ class Libro{
     private String autor;
     private String isbn;
     private int cantidadPaginas;
-    private int cantidadCopias;
+    private int copiasDisponibles;
+    private int totalCopias;
 
-        public Libro(String titulo,String autor, String isbn, int cantidadPaginas, int cantidadCopias){
+        public Libro(String titulo,String autor, String isbn, int cantidadPaginas, int totalCopias){
             this.titulo = titulo;
             this.autor = autor;
             this.isbn = isbn;
             this.cantidadPaginas = cantidadPaginas;
-            this.cantidadCopias = cantidadCopias;
+            this.totalCopias = totalCopias;
+            this.copiasDisponibles = totalCopias;
         }
 
         public String getTitulo(){
@@ -32,8 +34,12 @@ class Libro{
             return cantidadPaginas;
         }
 
-        public int getCantidadCopias(){
-            return cantidadCopias;
+        public int getTotalCopias(){
+            return totalCopias;
+        }
+
+        public int getCopiasDisponibles(){
+            return copiasDisponibles;
         }
 
         public void setTitulo(String titulo){
@@ -44,26 +50,20 @@ class Libro{
             this.autor = autor;
         }
 
-        public void setCantidadPaginas(int cantidadPaginas){
-            this.cantidadPaginas = cantidadPaginas;
-        }
-
-        public void setCantidadCopias(int cantidadCopias){
-            this.cantidadCopias = cantidadCopias;
-        }
-
         public boolean estaDisponible(){
-            return cantidadCopias > 0;
+            return copiasDisponibles > 0;
         }
 
         public void prestarCopia(){
-            if(cantidadCopias>0){
-              cantidadCopias--;
+            if(copiasDisponibles>0){
+              copiasDisponibles--;
             }
         }
 
         public void devolverCopia(){
-            cantidadCopias++;
+            if(copiasDisponibles<totalCopias){
+            copiasDisponibles++;
+            }
         }
 
         public void mostrarDatos(){
@@ -71,7 +71,7 @@ class Libro{
             System.out.println("Autor: "+ autor);
             System.out.println("ISBN: "+ isbn);
             System.out.println("Paginas: "+ cantidadPaginas);
-            System.out.println("Copias Disponibles: "+ cantidadCopias);
+            System.out.println("Copias Disponibles: "+ copiasDisponibles);
         }
 }
 
@@ -187,6 +187,20 @@ class Prestamo{
 
     public boolean isDevuelto(){
         return devuelto;
+    }
+
+}
+
+class Biblioteca {
+
+    private ArrayList<Libro> libros;
+    private ArrayList<Miembro> miembros;
+    private ArrayList<Prestamo> prestamos;
+
+    public Biblioteca(){
+        libros = new ArrayList<>();
+        miembros = new ArrayList<>();
+        prestamos = new ArrayList<>();
     }
 
 }
